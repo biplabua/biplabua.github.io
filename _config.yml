@@ -6,7 +6,7 @@ academic_email: bpaul5@mgh.harvard.edu
 description: > # this means to ignore newlines until "baseurl:"
   I am a scientist with a passion to serve developing nation in building their science capacity.
 
-baseurl: "biplabua.github.io" # the subpath of your site, e.g. /blog/
+#baseurl: "biplabua.github.io" # the subpath of your site, e.g. /blog/
 
 url: "https://biplabua.github.io" # the base hostname & protocol for your site
 
