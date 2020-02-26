@@ -4,7 +4,7 @@ permalink: /research/
 title: Research
 ---
 
-My research interest changed as I gone through different stages of my scientific career. At the begining of the masters program I was interested in bionanotechnology and studied surface ultrastructure of fungal cell wall. I have published one first author research paper and a method paper from my masters work. Then I became more interested in molecular cell biology, and worked on the link between ncRNA processing and mRNA biology in my PhD. So far I have published one research paper of my PhD work and another paper are going to be published soon.
+My research interest changed as I have gone through different stages of my scientific career. At the begining of the masters program I was interested in bionanotechnology and studied the surface ultrastructure of fungal cell wall. I have published one first author research paper and a method paper from my masters work. Then I became more interested in molecular cell biology, and worked on the link between ncRNA processing and mRNA biology in my PhD. So far I have published one research paper of my PhD work and another paper are going to be published soon.
 
 <h2>Publications</h2>
 <h2>Research Articles</h2>
