@@ -4,7 +4,7 @@ title: Blog
 permalink: /blog/
 ---
 
-I will try to write on various topics of my interest. Although purpose of most writing is to improve my writing skills through this blogging. Bioinformatics topic that will find here mostly for my own documentation but might be helpful for you too.  You can also search my posts by category <a href="{{ site.baseurl }}/categories/">here</a>.
+I will try to write on various topics of my interest here. Although the purpose of all these blogs is practice improve my writing skills. Bioinformatics topic that you will find here mostly for my own documentations but might be helpful for you too.  You can also search my posts by category <a href="{{ site.baseurl }}/categories/">here</a>.
 
 <ul class="listing">
 {% for post in site.posts %}
