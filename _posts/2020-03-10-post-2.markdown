@@ -1,9 +1,13 @@
+
 ---
+
 title: "Learning use of command line"
 author: "Biplab Paul"
-date: "3/20/2020"
+date: "03/20/2020"
 output: html_document
+
 ---
+
 
 Those of us who are at life science researchers, staying at home due to corona virus outbreak, we can learn new skills that will be helpful for our future work. One of the skills we can learn is how to use command line interface. If you have a Mac computer you can search for terminal in your computer, when you open the terminal then a black screen will appear where we can write command to perform task for computer and computer will give back results. If you are using windows machine you google how to use command line in winddows I think will be able to figure it out. 
 
