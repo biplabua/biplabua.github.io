@@ -15,6 +15,10 @@ If you have terminal open in your computer, think about what you would like your
 
 ```
 pwd
+```
+output
+
+```
 /Users/biplab
 ```
 
@@ -24,7 +28,9 @@ Now we would like check, what are the files and directory inside the home direct
 
 ```
 ls
-
+```
+output
+```
 Applications			Movies
 Desktop				Music
 Documents			Pictures
@@ -44,7 +50,9 @@ This command will not give back anything if the directory name or path is correc
 Now I am at Documents directory, I can check what is in documents directory by ls command. 
 ```
 ls
-
+```
+output
+```
 AB.pdf			Presentation		Tutorial
 ACMB.pdf		ResearchArticles	Writing
 MATLAB			ResearchData		megacc
@@ -81,7 +89,10 @@ You can press enter to see more content of the file. Press 'q' to go back to you
 
 Most of the time I use 'head' command to check first few line of the file and 'tail' command to check last few line of the file. 
 ```
-head lamina.bed 
+head lamina.bed
+```
+output
+```
 chrom	start	end	value
 chr1	11323785	11617177	0.86217008797654
 chr1	12645605	13926923	0.934891485809683
@@ -97,6 +108,7 @@ chr1	38272060	39078902	0.940932642487047
 ```
 tail lamina.bed
 ``` 
+output
 
 ```
 chrX	135187116	135597436	0.940133037694013
@@ -132,7 +144,7 @@ If we need to sort data based on data in one column we can use 'sort' command wi
 ```
 sort -k2n lamina.bed 
 ```
-
+output
 ```
 chrom	start	end	value
 chr20	11619	194068	0.980891719745223
