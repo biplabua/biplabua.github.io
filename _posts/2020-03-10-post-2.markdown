@@ -14,7 +14,7 @@ Those of us who are life science researchers, staying at home due to corona viru
 If you have terminal open in your computer, think about what you would like your computer to do. We are using our computer from terminal. First we are going to see how to navigate around different folder/directories in our computer. First thing we would like to check is that where we are in our computer, to get your location at your computer you can type the command 'pwd' your computer will give back your location at the computer. After opening location you get after opening the terminal is your 'home directory', please remember this term you might need it in future.
 
 ```
-biplab@Biplabs-MacBook-Air ~ % pwd
+pwd
 /Users/biplab
 ```
 
@@ -23,7 +23,8 @@ After starting terminal and entering 'pwd' command I get the path to the home di
 Now we would like check, what are the files and directory inside the home directory. We can check that by the command 'ls'
 
 ```
-biplab@Biplabs-MacBook-Air ~ % ls
+ls
+
 Applications			Movies
 Desktop				Music
 Documents			Pictures
@@ -36,13 +37,14 @@ Output from ls command give name of the directories and files in my working dire
 
 We can go to any directory we want let say, we would like to go to Documents directory. In order to change the directory we can use the command 'cd' which means 'change directory'. So far we typed command but did not give any input to the command. This time we need to give input to the 'cd' command, the input to the command called 'argument' remember the term arguments. Argument should be separated by space. Argument to the 'cd' command is the name or path to the directory where we would like to go. Lets say I would like to go to Documents directory then I need to put 'Documents' with a space after cd.
 ```
-biplab@Biplabs-MacBook-Air ~ % cd Documents
+cd Documents
 ```
 This command will not give back anything if the directory name or path is correct. If you give an incorrect name in the argument you will get an error message saying 'no such file or directory:' Obove command will change my working direcotry to Documents. Again you can check path to working directory by 'pwd' command. You use 'ls' command to check what are files or directories in your currect location. 
 
 Now I am at Documents directory, I can check what is in documents directory by ls command. 
 ```
-biplab@Biplabs-MacBook-Air Documents % ls
+ls
+
 AB.pdf			Presentation		Tutorial
 ACMB.pdf		ResearchArticles	Writing
 MATLAB			ResearchData		megacc
@@ -51,35 +53,35 @@ MEGA X			Scripts
 Let say I would like to go to ResearchData directory, I can agin use cd cammand and name of the directory to go to ResearchData directory. I am in ResearchData directory but I would like to go one directory up, which is Documents directory. In this case if you put cd Documents, it will give an error. In stead of Documents argument you need to put '..' which will take you to directory that is one step back that Documents directory.
 
 ```
-biplab@Biplabs-MacBook-Air ResearchData % cd ..
+cd ..
 ```
 
 Now we are able to move around our computer's directories. In my Documents directory I have two pdf files, which I would to copy to Presentation directory. I can use 'cp' command for copying files or directory. You need to give two argument for 'cp' command, one is the file name or path to the file and directory or path to the directory where you would like to copy the file. 
 ```
-biplab@Biplabs-MacBook-Air Documents % cp AB.pdf Tutorial
+cp AB.pdf Tutorial
 ```
 Now we would like to change name of the file AB.pdf to bioinformatics.pdf we can use 'mv' command to change file name or move a file from one directory to another. 
 ```
-biplab@Biplabs-MacBook-Air Tutorial % mv AB.pdf bioinformatics.pdf
+mv AB.pdf bioinformatics.pdf
 ```
 Next thing is about deleting file from the computer. We can use 'rm' comand to remove file from the computer.
 ```
-biplab@Biplabs-MacBook-Air Tutorial % rm AB.pdf
+rm AB.pdf
 ```
 
 I have lamina.bd file in Tutorial folder I can check content of the file by 'cat' command. 'cat' command will print content of the file on the screen.
 ```
-biplab@Biplabs-MacBook-Air Tutorial % cat lamina.bed
+cat lamina.bed
 ```
 If the file is very big it is good idea to use 'less' command to look at the content of the file. 
 ```
-biplab@Biplabs-MacBook-Air Tutorial % less lamina.bed
+less lamina.bed
 ```
 You can press enter to see more content of the file. Press 'q' to go back to your command line again. 
 
 Most of the time I use 'head' command to check first few line of the file and 'tail' command to check last few line of the file. 
 ```
-biplab@Biplabs-MacBook-Air Tutorial % head lamina.bed 
+head lamina.bed 
 chrom	start	end	value
 chr1	11323785	11617177	0.86217008797654
 chr1	12645605	13926923	0.934891485809683
@@ -91,8 +93,12 @@ chr1	36712462	37685238	0.95655951346655
 chr1	37838094	38031209	0.944206008583691
 chr1	38272060	39078902	0.940932642487047
 ```
+
 ```
-biplab@Biplabs-MacBook-Air Tutorial % tail lamina.bed 
+tail lamina.bed
+``` 
+
+```
 chrX	135187116	135597436	0.940133037694013
 chrX	135860243	138648904	0.888570404872805
 chrX	138846031	148357359	0.83263937080731
@@ -106,23 +112,28 @@ chrY	15475619	19472504	0.813842482100239
 ```
 Let do something more useful. I would like to know how many line in lamina.bed. I can use 'wc' command with the option '-l' to count number of line in the file. 
 ```
-biplab@Biplabs-MacBook-Air Tutorial % wc -l lamina.bed 
+wc -l lamina.bed 
+```
+```
     1345 lamina.bed
 ```
  The lamina.bed file has 1345 lines. 
 
 Sometime we need specific column of the data file. We can use 'cut' command with '-f' option to select specific column from the data file. For '-f' option we need to provide column number that we would like to select.
 ```
-biplab@Biplabs-MacBook-Air Tutorial % cut -f 1,2 lamina.bed
+cut -f 1,2 lamina.bed
 ```
 This command will output first and sencond column of lamina.bed file. Sometime columns are separated by comma instead of space in that case 'cut' command has an option to input how the columns are separated. I have a comma separated file with four column. For that file I need to use -d ","
 ```
-biplab@Biplabs-MacBook-Air Tutorial % cut -d "," -f 1,2 lamin_head.bed
+cut -d "," -f 1,2 lamin_head.bed
 ```
 If we need to sort data based on data in one column we can use 'sort' command with 'k' option to sort data. 
 
 ```
-biplab@Biplabs-MacBook-Air Tutorial % sort -k2n lamina.bed 
+sort -k2n lamina.bed 
+```
+
+```
 chrom	start	end	value
 chr20	11619	194068	0.980891719745223
 chr8	696699	1664048	0.736240913811007
@@ -160,7 +171,10 @@ A lot of time I use wild card character, which act as a place holder for any one
 \*.txt means any one or more character before ".txt" simmilarly abc\* means any one or more character after "abc". Let see one example of using wild card. In my working directory I have a lot of differnt types of files such as pdf, doc, jpg, fasta files. I only want list of file that are pdf, here I can use wild \*.pdf to print list of files that are pdf.
 
 ```
-biplab@Biplabs-MacBook-Air Documents % ls *.pdf
+ls *.pdf
+```
+
+```
 AB.pdf		ACMB.pdf
 ```
 
