@@ -119,12 +119,68 @@ This command will output first and sencond column of lamina.bed file. Sometime c
 biplab@Biplabs-MacBook-Air Tutorial % cut -d "," -f 1,2 lamin_head.bed
 ```
 If we need to sort data based on data in one column we can use sort command with k option to sort data. 
+
 ```
-biplab@Biplabs-MacBook-Air Tutorial % sort -k2n lamina.bed
+biplab@Biplabs-MacBook-Air Tutorial % sort -k2n lamina.bed 
+chrom	start	end	value
+chr20	11619	194068	0.980891719745223
+chr8	696699	1664048	0.736240913811007
+chr9	808574	2755227	0.904992729035385
+chr18	857086	2083983	0.93071000855432
+chr10	1193532	3050735	0.827242524916944
+chr20	1406160	1690748	0.96989966555184
+chr5	1715774	5463587	0.817772511848341
+chr2	1829412	3344344	0.865861027190332
+chr20	1876704	2021710	0.951351351351351
+chr8	1971125	6247858	0.872897196261682
+```
+In the above commend 'k2n' means consider column 2 as number. We can see that output are sorted based number in column 2.
+
+One advantage of command line is that you can redirect output from one command to another command by using pipe character '|'. In first column of the lamina.bed file contain chromosome name, we can select first column by cut command then redirect to uniq command to see what are the uniq chromosome in that file.
+
+```
+cut -f 1 lamina.bed | uniq
 ```
 
+So far we are printing all of our output on the screen, you can redirect output to a file by using '>'. Let say we would like to redirect output from above command to a file name called chrome_name.tx.
 
-Sometime we need to replace a secific charactor from a file with another character. For example lamina_head.bed file is comma separated, now I would like to replace , with space. We can use tr command to replace , by space. 
+```
+cut -f 1 lamina.bed | uniq > chrome_name.tx
+```
+Sometime we need to replace a secific charactor from a file with another character. For example lamina_head.bed file is comma separated, now I would like to replace , with space. We can use tr command to replace , by space. 1st argument for 'tr' command is the pattern we would like to replace and second argument is the character that we would like to replace with. In our case 1st argument is "," second argument is space which is given insite quote " ". 'tr' commend can not operate on file directly so I print content of by file by cat then redirect to 'tr' command.
+
+```
+cat lamin_head.bed | tr "," " " 
+```
+
+Wild card
+
+A lot of time I use wild card character, which act as a place holder for any one or more character. Most of the time I use star * wildcard.
+\*.txt means any one or more character before ".txt" simmilarly abc\* means any one or more character after "abc". Let see one example of using wild card. In my working directory I have a lot of differnt type of files such as pdf, doc, jpg, fasta files. I only want list of file that are pdf here I can use wild \*.pdf to select print list of files that are pdf.
+
+```
+biplab@Biplabs-MacBook-Air Documents % ls *.pdf
+AB.pdf		ACMB.pdf
+```
+
+Bioinformatic analysis involve donwloading data from web. We can use 'wget' or 'curl' command to download data from webstite. 'wget' or 'curl' take web link for the file as an argument. 
+
+```
+wget https://downloads.yeastgenome.org/sequence/S288C_reference/genome_releases/S288C_reference_genome_R63-1-1_20100105.tgz
+```
+This will download S288C_reference_genome_R63-1-1_20100105.tgz file in your working directory. This is a genome sequence file from Saccharomyces Genome Database. 
+
+Files for genomic data is very big, so to reduce space in computer size of the file is reduced by using compression. The file we downloaded from SGD website is a 'tgz' file. One of the way compress the file using gzip. File name end with .gz that the file compressed by gzip. You need to use 'gunzip' command to decompress the file. Some time multiple files and compress together by archive and compress together to a single file called 'tarball' and the file name has extension of '.tgz' or 'tar.gz'. This file can be extracted by following command.
+
+```
+tar -zxvf S288C_reference_genome_R63-1-1_20100105.tgz
+```
+
+Above command will decompress the file we downloaded and you will see a directory name 'S288C_reference_genome_R63-1-1_20100105'. You can go into that directory and check files. 
+
+
+
+
 
 
 
