@@ -1,2 +1,127 @@
-#AWK programming for biologists
-AWK is a programming language that is design to extract data from text file. AWK is standard feature for most unix like system
+---
+title: "Learning use of command line"
+author: "Biplab Paul"
+date: "3/20/2020"
+output: html_document
+---
+
+Those of us who are at life science researchers, staying at home due to corona virus outbreak, we can learn new skills that will be helpful for our future work. One of the skills we can learn is how to use command line interface. If you have a Mac computer you can search for terminal in your computer, when you open the terminal then a black screen will appear where we can write command to perform task for computer and computer will give back results. If you are using windows machine you google how to use command line in winddows I think will be able to figure it out. 
+
+If you have terminal open in your computer, think about what you would like your computer to do. We are using our computer from terminal. First think we are going to learn is how navigate around different folder/directories in our computer. First thing we would like to check is that where we are in our computer, to get your location at your computer you can type the command 'pwd' your computer will give back your location at the computer. After opening location you get after opening the terminal is your 'home directory', please remember this term you might need it in future.
+
+```
+biplab@Biplabs-MacBook-Air ~ % pwd
+/Users/biplab
+```
+
+After starting terminal and entering 'pwd' command I get the path to the home directory. Now what is path? Forlders or directory structure in our computer has a heigharchical structure starting with the 'root directory'. The output from pwd command '/Users/biplab' the '/' at begining denotes the root directory. 
+
+Now we would like check, what are the files and directory inside the home directory. We can check that by the command 'ls'
+
+```
+biplab@Biplabs-MacBook-Air ~ % ls
+Applications			Movies
+Desktop				Music
+Documents			Pictures
+Downloads			Public
+Dropbox (Partners HealthCare)	opt
+Library
+```
+
+Output from ls command give name of the directories and files in my home directory. Here I can see I have Application directory, Desktop and Documents directories etc. 
+
+We can go to any directory we want let say, we would like to go to Documents directory. In order to change directory we can use the command 'cd' which means change directory. So far we typed command but did not give any input to the command. This time we need to give input to the cd command, the input to the command called 'argument' remember the term arguments. Argument should be separated by space. Argument to the cd command is the name or path to the directory where we would like to go. Lets say I would like to go to Documents directory then I need to put 'Documents' with a space after cd.
+```
+biplab@Biplabs-MacBook-Air ~ % cd Documents
+```
+This command will not give back anything if the directory name or path is correct. You use pwd to check you are now and use ls command to check what are files or directories in your currect location. If you give an incorrect name in the argument you will get an error message saying 'no such file or directory:'
+
+Now I am at Documents directory, I can check what is in documents directory by ls command. 
+```
+biplab@Biplabs-MacBook-Air Documents % ls
+AB.pdf			Presentation		Tutorial
+ACMB.pdf		ResearchArticles	Writing
+MATLAB			ResearchData		megacc
+MEGA X			Scripts
+```
+Let say I would like to go to ResearchData directory, I can agin use cd cammand and name of the directory to go to ResearchData directory. I am in ResearchData directory but I would like to go one directory up, which is Documents directory. In this case if you put cd Documents, it will give an error. In stead of Documents argument you need to put .. which will take you to Documents directory.
+```
+biplab@Biplabs-MacBook-Air ResearchData % cd ..
+```
+
+Now we are able to move around our computer directories. Now how we can In my Documents directory I have two pdf files, which I would to copy to Presentation directory. I can use cp command for copying files or directory. You need to give two argument for cp command, one is the file name or path to the file and directory or path to the directory where you would like to copy the file. 
+```
+biplab@Biplabs-MacBook-Air Documents % cp AB.pdf Tutorial
+```
+Now we would like to change name of the file AB.pdf to bioinformatics.pdf we can use mv command to change file name or move a file from one directory to another. 
+```
+biplab@Biplabs-MacBook-Air Tutorial % mv AB.pdf bioinformatics.pdf
+```
+Next thing is about deleting file from the computer. We can use rm comand to remove file from the computer.
+```
+biplab@Biplabs-MacBook-Air Tutorial % rm AB.pdf
+```
+
+I have lamina.bd file in Tutorial folder I can check content of the file by cat command. cat command will print content of the file on the screen.
+```
+biplab@Biplabs-MacBook-Air Tutorial % cat lamina.bed
+```
+If the file is very big it is good idea to use less command to look at the content of the file. 
+```
+biplab@Biplabs-MacBook-Air Tutorial % less lamina.bed
+```
+You can press enter to see more content of the file. Press 'q' to go back to your command line again. 
+
+Most of the time I use 'head' command to check first few line of the file and 'tail' command to check last few line of the file. 
+```
+biplab@Biplabs-MacBook-Air Tutorial % head lamina.bed 
+chrom	start	end	value
+chr1	11323785	11617177	0.86217008797654
+chr1	12645605	13926923	0.934891485809683
+chr1	14750216	15119039	0.945945945945946
+chr1	18102157	19080189	0.895174708818636
+chr1	29491029	30934636	0.892526250772082
+chr1	33716472	35395979	0.911901081916538
+chr1	36712462	37685238	0.95655951346655
+chr1	37838094	38031209	0.944206008583691
+chr1	38272060	39078902	0.940932642487047
+```
+```
+biplab@Biplabs-MacBook-Air Tutorial % tail lamina.bed 
+chrX	135187116	135597436	0.940133037694013
+chrX	135860243	138648904	0.888570404872805
+chrX	138846031	148357359	0.83263937080731
+chrX	148454624	148844607	0.784702549575071
+chrX	153719866	153904495	0.772413793103448
+chrY	2940166	7172793	0.808911201757138
+chrY	7880008	13098461	0.79400260756193
+chrY	13556427	13843364	0.892655367231638
+chrY	14113371	15137286	0.93640897755611
+chrY	15475619	19472504	0.813842482100239
+```
+Let do something more useful. I would like to know how many line in lamina.bed. I can use wc command with the option -l to count number of line in the file. 
+```
+biplab@Biplabs-MacBook-Air Tutorial % wc -l lamina.bed 
+    1345 lamina.bed
+```
+ The lamina.bed file has 1345 lines. 
+
+Sometime we need specific column of the data file. We can use cut command with -f option to select specific column from the data file. For -f option we need to provide column number that we would like to select.
+```
+biplab@Biplabs-MacBook-Air Tutorial % cut -f 1,2 lamina.bed
+```
+This command will output first and sencond column of lamina.bed file. Sometime columns are separated by comma instead of space in that case cut command has an option to input how the columns are separated. I have a comma separated file with four column. For that file I need to use -d ","
+```
+biplab@Biplabs-MacBook-Air Tutorial % cut -d "," -f 1,2 lamin_head.bed
+```
+If we need to sort data based on data in one column we can use sort command with k option to sort data. 
+```
+biplab@Biplabs-MacBook-Air Tutorial % sort -k2n lamina.bed
+```
+
+
+Sometime we need to replace a secific charactor from a file with another character. For example lamina_head.bed file is comma separated, now I would like to replace , with space. We can use tr command to replace , by space. 
+
+
+
+
