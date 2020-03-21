@@ -183,10 +183,12 @@ Another command I use a lot is 'grep' command. You can look for pattern is file 
 ```
 grep '>' S288C_reference_sequence_R63-1-1_20100105.fsa
 ```
-This will print seqence names in S288C_reference_sequence_R63-1-1_20100105.fsa fasta file on the screen. 
+This will print seqence names in S288C_reference_sequence_R63-1-1_20100105.fsa fasta file on the screen. Sometime I need to print line that does not contain the pattern, in that case I 'grep' with option '-v'.
+```
+grep -v '>' S288C_reference_sequence_R63-1-1_20100105.fsa
+```
 
-
-
+This will print sequences in the file without the name. 
 
 
 
