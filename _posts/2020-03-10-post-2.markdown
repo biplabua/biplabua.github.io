@@ -1,7 +1,7 @@
 ---
 title: "Learning use of command line"
 author: "Biplab Paul"
-date: "3/20/2020"
+date: "03/20/2020"
 output: html_document
 ---
 
