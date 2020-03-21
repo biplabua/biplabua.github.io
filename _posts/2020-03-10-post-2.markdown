@@ -190,7 +190,13 @@ grep -v '>' S288C_reference_sequence_R63-1-1_20100105.fsa
 
 This will print sequences in the file without the name. 
 
+So far we were working with single files, in reality I need to pass a commands to mutlple files and stored the output in multiple file. You can write a for loop to perform this kind of work. Let write a simple for loop in shell. "S288C_reference_sequence_R63-1-1_20100105" directory has multiple fasta file we would like to print head of every files. Bellow is the for loop to do that. 
 
+```
+for i in `ls *.fasta` do
+head $i done
+```
+I use simillar for loop to perform a lot of tasks where multiple files need to be processed by same command. 
 
 
 
