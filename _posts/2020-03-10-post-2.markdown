@@ -224,5 +224,6 @@ head $i done
 ```
 I use simillar for loop to perform a lot of tasks where multiple files need to be processed by same command. 
 
+This is a very simple command line applications, you can do many more in command line. Most commands I talked about has various options you google about every command to find more. This I hope will help you get started with command line. 
 
 
