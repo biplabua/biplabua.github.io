@@ -1,7 +1,7 @@
 ---
 title: "Use of BiomaRt R package"
 author: "Biplab Paul"
-date: "2/6/2020"
+date: "02/01/2020"
 output: html_document
 ---
 
