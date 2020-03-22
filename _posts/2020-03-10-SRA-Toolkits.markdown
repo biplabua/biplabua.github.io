@@ -48,6 +48,24 @@ fastq-dump -h
 Should output the help manual
 
 #Dowload fastq file from SRA database.
+Once you install sra toolkit in your computer downloading raw fastq data from the sra database become very simple. 
+
+Find out SRR numbers for the raw data, then use fastq-dump command to download data to local computer. For example I got SRR number for RNA-Seq of yeast strain, which is SRR1761158
+
+```
+fastq-dump SRR1761158
+```
+Above commend will download data in fastq format which is SRR1761158.fastq. 
+
+If the data in pair-end format, you need to use --split-files option of fastq-dump. SRR6145788 is a pair-end RNA-Seq data which I can download by following command.
+
+```
+fastq-dump --split-files SRR6145788
+```
+Above command will download two files with SRR6145788_1.fastq and SRR6145788_2.fastq in your current directory.
+
+This fastq file will not tell you anything about the sample information. You can use run selector to download information about the sample. Please nevigate around the SRA database, it will help you to understand how data are stored in SRA database. 
+
 
 
 
