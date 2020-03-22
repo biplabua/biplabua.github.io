@@ -2,9 +2,9 @@
 
 # Learning to use command line
 
-Those of us who are life science researchers, staying at home due to corona virus outbreak, we can learn new skills that will be helpful for our future work. One of the skills we can learn is how to use command line interface. If you have a Mac computer you can search for terminal in your computer, when you open the terminal then a black screen will appear where we can write command to perform task by computer and computer will give back results. If you are using windows machine, you can google "how to use command line in winddows" I think will be able to figure it out. 
+Life science researchers staying at home due to corona virus outbreak, can learn new skills that will be helpful for our future work. One of the skills we can learn is how to use command line interface. If you have a Mac computer you can search for terminal in your computer, when you open the terminal, a black screen will appear where we can write command to perform task by computer and computer will give back results. If you are using windows machine, you can google "how to use command line in winddows" I think will be able to figure it out. 
 
-If you have terminal open in your computer, think about what you would like your computer to do. We are using our computer from terminal. First we are going to see how to navigate around different folder/directories in our computer. First thing we would like to check is that where we are in our computer, to get your location at your computer you can type the command 'pwd' your computer will give back your location at the computer. After opening location you get after opening the terminal is your 'home directory', please remember this term you might need it in future.
+If you have terminal open in your computer, you are using our computer from terminal. First we are going to see how to navigate around different folders/directories in our computer. First thing we would like to check is that, where we are in our computer, to get your location at your computer you can type the command 'pwd' your computer will give back your location at the computer. The location you get after opening the terminal is your 'home directory', please remember this term you might need it in future.
 
 ```
 pwd
@@ -15,7 +15,7 @@ output
 /Users/biplab
 ```
 
-After starting terminal and entering 'pwd' command I get the path to the home directory, which is your working directory when you open the terminal. At a given time your location in the computer is called working directory. 'pwd' means 'print working directory'. Now what is path? Forlders or directory structure in our computer has a heigharchical structure starting with the 'root directory'. The output from pwd command '/Users/biplab' the '/' at begining denotes the root directory. 
+After starting terminal and entering 'pwd' command I get the path to the home directory, which is my working directory when you open the terminal. At a given time your location in the computer is called current/working directory. 'pwd' means 'print working directory'. Now what is path? Forlders or directory structure in our computer has a heigharchical starting with the 'root directory'. The output from 'pwd' command '/Users/biplab' the '/' at begining denotes the root directory. 
 
 Now we would like check, what are the files and directory inside the home directory. We can check that by the command 'ls'
 
@@ -32,9 +32,9 @@ Dropbox (Partners HealthCare)	opt
 Library
 ```
 
-Output from ls command give name of the directories and files in my working directory. Here I can see I have Application, Desktop and Documents directories
+Output from 'ls' command gives name of the directories and files in my working directory. Here I can see I have Application, Desktop and Documents directories
 
-We can go to any directory we want let say, we would like to go to Documents directory. In order to change the directory we can use the command 'cd' which means 'change directory'. So far we typed command but did not give any input to the command. This time we need to give input to the 'cd' command, the input to the command called 'argument' remember the term arguments. Argument should be separated by space. Argument to the 'cd' command is the name or path to the directory where we would like to go. Lets say I would like to go to Documents directory then I need to put 'Documents' with a space after cd.
+We can go to any directory we want let say, we would like to go to Documents directory. In order to change the directory we can use the command 'cd' which means 'change directory'. So far we typed command but did not give any input to the command. This time we need to give input to the 'cd' command, the input to the command called 'argument' remember the term arguments. Argument should be separated by space. Argument to the 'cd' command is the name or path to the directory where we would like to go. Lets say I would like to go to Documents directory then I need to put 'Documents' with a space after cd. If you do not put any argument after cd command, you will go back to your home directory.
 ```
 cd Documents
 ```
