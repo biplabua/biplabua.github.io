@@ -1,7 +1,4 @@
 
-
-# Learning to use command line
-
 I am a cell biologist; I perform experiments in a laboratory to answer scientific questions. Due to corona virus outbreak our laboratory has been closed, so I am spending all my time at home. I have decided to write some tutorials for bioinformatics data analysis, so that I can go back to these tutorials whenever I will need. These tutorials might be useful for other biologists as well. If you have a Mac computer you can search for terminal in your computer, when you open the terminal, a black screen will appear where we can write command to perform task by computer and computer will give back results. If you are using windows machine, you can google "how to use command line in windows" I think will be able to figure it out. 
 
 If you have terminal open in your computer, you are using our computer from terminal. First we are going to see how to navigate around different folders/directories in our computer. First thing we would like to check is that, where we are in our computer, to get your location at your computer you can type the command 'pwd' your computer will give back your location at the computer. The location you get after opening the terminal is your 'home directory', please remember this term you might need it in future.
