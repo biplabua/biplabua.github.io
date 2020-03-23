@@ -1,7 +1,7 @@
 
 # Installation of SRA toolkit
 
-Now a days all most all labs are performing RNA-Seq experiments. If an article has RNA-Seq data, they need to make it available in SRA repository for anybody to download and analyze it. In order to download data from SRA database as fastq format you need to use SRA toolkit software. 
+Now a days all most of the labs are performing RNA-Seq experiments. If an article has RNA-Seq data, they need to make it available in SRA repository for anybody to download and analyze it. In order to download data from SRA database as fastq format you need to use SRA toolkit software. 
 
 How to install SRA toolkit?
 Download SRA toolkit using wget command.
