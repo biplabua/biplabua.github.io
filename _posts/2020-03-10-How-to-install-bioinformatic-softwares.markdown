@@ -1,8 +1,7 @@
 
 # Installation of SRA toolkit
 
-How to downloads RNA Seq data from SRA database?
-Now a days all most all labs are performing RNA-Seq experiments. If an article has RNA-Seq data the labs need to make data available to SRA repository for anybody to download analyze it. In order to download data from SRA database as fastq formate you need to use SRA toolkit software. 
+Now a days all most all labs are performing RNA-Seq experiments. If an article has RNA-Seq data, they need to make it available in SRA repository for anybody to download and analyze it. In order to download data from SRA database as fastq format you need to use SRA toolkit software. 
 
 How to install SRA toolkit?
 Download SRA toolkit using wget command.
@@ -11,7 +10,7 @@ Download SRA toolkit using wget command.
 wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.9.6-1/sratoolkit.2.9.6-1-mac64.tar.gz
 ```
 
-Unizp the tarball 
+Unzip the tarball 
 ```
 tar -xvzf sratoolkit.2.9.6-1-mac64.tar.gz
 ```
@@ -47,7 +46,7 @@ fastq-dump -h
 
 Should output the help manual
 
-# Installation of Bioinformatic Software using Bioconda
+# Installation of Bioinformatic Softwares using Bioconda
 As you have seen above that installation of bioinformatic software can be little complicated, in order to reduce complication of software installation you can install bioconda, package management system in your computer. Bioconda contains a large number of bioinformatics software you can easily install any one of those by using 'conda install' command.
 
 For mac user you can install conda by command below:
@@ -64,7 +63,7 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 ```
 
-Now we will install few bioinformatic software using bioconda. 
+Now we will install few bioinformatic softwares using bioconda. 
 Once we get next generation sequencing data from the sequencing facility, first we need to check quality of data by using the software fastqc. Then we might need to pre-process our raw data using, we can do this by using trimmomatic software. Then we need to align reads to the reference genome if reference genome is available. I usually do the align reads to the reference genome by the software hisat2. We will install all three by following commands.
 
 ```
@@ -78,10 +77,10 @@ conda install -c bioconda sra-tools
 ```
 From now I will use conda install if bioinformatic software is available in bioconda package manager. 
 
-# Dowload fastq file from SRA database.
+# How to download fastq files from SRA database.
 Once you install sra toolkit in your computer downloading raw fastq data from the sra database become very simple. 
 
-Find out SRR numbers for the raw data, then use fastq-dump command to download data to local computer. For example I got SRR number for RNA-Seq of yeast strain, which is SRR1761158
+Find out SRR numbers for the raw data, then use fastq-dump command to download data to local computer. For example, I got SRR number for RNA-Seq of yeast strain, which is SRR1761158
 
 ```
 fastq-dump SRR1761158
@@ -95,7 +94,7 @@ fastq-dump --split-files SRR6145788
 ```
 Above command will download two files with SRR6145788_1.fastq and SRR6145788_2.fastq in your current directory.
 
-This fastq file will not tell you anything about the sample information. You can use run selector to download information about the sample. Please nevigate around the SRA database, it will help you to understand how data are stored in SRA database. 
+This fastq file will not tell you anything about the sample information. You can use run selector to download information about the sample. Please navigate around the SRA database, it will help you to understand how data are stored in SRA database. 
 
 
 
