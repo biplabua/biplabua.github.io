@@ -1,5 +1,5 @@
 
-#Installation of SRA toolkit
+# Installation of SRA toolkit
 
 How to downloads RNA Seq data from SRA database?
 Now a days all most all labs are performing RNA-Seq experiments. If an article has RNA-Seq data the labs need to make data available to SRA repository for anybody to download analyze it. In order to download data from SRA database as fastq formate you need to use SRA toolkit software. 
@@ -47,7 +47,7 @@ fastq-dump -h
 
 Should output the help manual
 
-#Installation of Bioinformatic Software using Bioconda
+# Installation of Bioinformatic Software using Bioconda
 As you have seen above that installation of bioinformatic software can be little complicated, in order to reduce complication of software installation you can install bioconda, package management system in your computer. Bioconda contains a large number of bioinformatics software you can easily install any one of those by using 'conda install' command.
 
 For mac user you can install conda by command below:
@@ -78,7 +78,7 @@ conda install -c bioconda sra-tools
 ```
 From now I will use conda install if bioinformatic software is available in bioconda package manager. 
 
-#Dowload fastq file from SRA database.
+# Dowload fastq file from SRA database.
 Once you install sra toolkit in your computer downloading raw fastq data from the sra database become very simple. 
 
 Find out SRR numbers for the raw data, then use fastq-dump command to download data to local computer. For example I got SRR number for RNA-Seq of yeast strain, which is SRR1761158
