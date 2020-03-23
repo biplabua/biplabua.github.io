@@ -47,6 +47,37 @@ fastq-dump -h
 
 Should output the help manual
 
+#Installation of Bioinformatic Software using Bioconda
+As you have seen above that installation of bioinformatic software can be little complicated, in order to reduce complication of software installation you can install bioconda, package management system in your computer. Bioconda contains a large number of bioinformatics software you can easily install any one of those by using 'conda install' command.
+
+For mac user you can install conda by command below:
+```
+curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+```
+```
+sh Miniconda3-latest-MacOSX-x86_64.sh
+```
+After installing conda, you need to add the bioconda channels and dependency by running commands below in order:
+```
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+```
+
+Now we will install few bioinformatic software using bioconda. 
+Once we get next generation sequencing data from the sequencing facility, first we need to check quality of data by using the software fastqc. Then we might need to pre-process our raw data using, we can do this by using trimmomatic software. Then we need to align reads to the reference genome if reference genome is available. I usually do the align reads to the reference genome by the software hisat2. We will install all three by following commands.
+
+```
+conda install -c bioconda fastqc
+conda install -c bioconda trimmomatic
+conda install -c bioconda hisat2
+```
+Now you have conda installed in your computer, if you were not able to sratoolkit yet, you can use conda install for installation of sratoolkit.
+```
+conda install -c bioconda sra-tools
+```
+From now I will use conda install if bioinformatic software is available in bioconda package manager. 
+
 #Dowload fastq file from SRA database.
 Once you install sra toolkit in your computer downloading raw fastq data from the sra database become very simple. 
 
