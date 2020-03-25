@@ -139,8 +139,7 @@ with(subset(res, padj<.05 & abs(log2FoldChange)>2), points(log2FoldChange, -log1
 ```
 Here is the volcano plot:
 
-![]
-(https://github.com/biplabua/biplabua.github.io/blob/master/images/volcano_plot.png "volacoplot")
+{% include image.html url="/images/volcano_plot.png" caption="Volcano plot" width=300 align="right" %}
 
 If we have multiple samples we can visualize log2FoldChange by using clustering and heatmap. Letter tutorial I will write about making heatmap in R.
 
