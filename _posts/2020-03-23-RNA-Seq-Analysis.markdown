@@ -46,9 +46,11 @@ gunzip Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel.fa.gz
 wget ftp://ftp.ensembl.org/pub/release-99/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz
 gunizp Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz
 ```
+If you would like to perform a spliced alignment, you can provide a known spliced sites which hisat2 will use for alignment. You can make file with known splice site from gtf file using hisat2_extract_splice_sites.py scripts provided in hisat2 directory. Here I am using yeast gtf file, if you can use any gtf file you want.
 ```
 python ./scripts/hisat2-2.1.0/hisat2_extract_splice_sites.py ./annotation/Saccharomyces_cerevisiae.R64-1-1.99.gtf > ./annotation/splicesites.txt
 ```
+Below is the code for aligning read to the yeast genome. My reads are single end therefore I have one fastq file as input. If you have paired end data you need to modify this code. You can run the code below from rawdata directory. The output for this code will be bam file in bam_file directory.
 
 ```
 for fqfile in `ls *.fastq | sed 's/.fastq//g' | sort -u`
@@ -57,12 +59,15 @@ hisat2 -x ~/Documents/Tutorial/RNA_Seq_Analysis/annotation/Saccharomyces_cerevis
 done
 ```
 
+Before counting the code you need to sort the bam file by using samtools sort. Run code below from the bam_file directory. This will generate sorted.bam files.
+
 ```
 for bam_file in `ls *bam | sed 's/.bam//g' | sort -u`;
 do
 samtools sort $bam_file.bam > $bam_file.sorted.bam
 done
 ```
+If you would like visualize RNA-Seq data in IGV, you need to make an index file, below is the code for generating index file. After generating index file you can load sorted.bam file in IGV for visualization of RNA-Seq track.
 ```
 for bam_file in `ls *sorted.bam`;
 do
@@ -73,6 +78,6 @@ done
 ```
 for bam_file in `ls *bam.sorted`;
 do
-featureCounts -s 2 -t exon -g gene_id -a ~/Documents/Tutorial/RNA_Seq_Analysis/annotation/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ~/Documents/Tutorial/RNA_Seq_Analysis/counts/$bam_file ~/Documents/Tutorial/RNA_Seq_Analysis/bam_files/$bam_file
+featureCounts -s 2 -t exon -g gene_id -a ~/Documents/Tutorial/RNA_Seq_Analysis/annotation/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ~/Documents/Tutorial/RNA_Seq_Analysis/count_file/$bam_file ~/Documents/Tutorial/RNA_Seq_Analysis/bam_files/$bam_file
 done
 ```	
