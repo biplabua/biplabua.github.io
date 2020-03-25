@@ -34,14 +34,17 @@ Data we downloaded is RNA sequencing data from yeast strain between two differen
 
 In order to consider sliced site I need to generate a file containing spliced site using extract_splice_sites.py script, which part of hisat2 software. Please download the hisat2
 ```
+cd scripts
 wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-Linux_x86_64.zip
 unzip hisat2-2.1.0-Linux_x86_64.zip
 ```
+Download yeast fasta file for yeast genome.
 ```
+cd annotation
 wget ftp://ftp.ensembl.org/pub/release-99/fasta/saccharomyces_cerevisiae/dna/Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel.fa.gz
 gunzip Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel.fa.gz
 ```
-
+Download GTF file for yeast genome. You will need this file for generating known splice site and counting number of read align to the gene.
 ```
 wget ftp://ftp.ensembl.org/pub/release-99/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz
 gunizp Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz
