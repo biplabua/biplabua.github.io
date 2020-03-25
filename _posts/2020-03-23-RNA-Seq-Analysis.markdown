@@ -13,7 +13,7 @@ mkdir mata_data
 Go to following link and download accession list and metadata file.
 [Accession list download link](https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=272684)
 
-“click on 'Send to'(top right corner)”  Select “Run Selector”  then click on 'go' Select above mentioned run then by clicking Metadata and Accession List we will get metadata and accession list file which we will use for our analysis. Accession list file name is SRR_Acc_List.txt and metadata file name is SraRunTable.txt.
+Go to the link above and click on 'Send to'(top right corner). Select “Run Selector”  then click on 'go' Select above mentioned run then by clicking Metadata and Accession List we will get metadata and accession list file which we will use for our analysis. Accession list file name is SRR_Acc_List.txt and metadata file name is SraRunTable.txt.
 Move the acession list file to the raw data directory and SraRunTable.txt file to the metadata directory
 
 ```
