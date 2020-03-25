@@ -137,6 +137,8 @@ with(res, plot(log2FoldChange, -log10(pvalue), pch=20, main="Volcano plot", xlim
 with(subset(res, padj<.05 ), points(log2FoldChange, -log10(pvalue), pch=20, col="blue"))
 with(subset(res, padj<.05 & abs(log2FoldChange)>2), points(log2FoldChange, -log10(pvalue), pch=20, col="red"))
 ```
+Here is the volcano plot:
+![alt text](https://github.com/biplabua/biplabua.github.io/blob/master/images/volcano_plot.png)
 If we have multiple samples we can visualize log2FoldChange by using clustering and heatmap. Letter tutorial I will write about making heatmap in R.
 
 
