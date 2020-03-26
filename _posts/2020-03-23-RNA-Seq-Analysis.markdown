@@ -44,6 +44,11 @@ cd annotation
 wget ftp://ftp.ensembl.org/pub/release-99/fasta/saccharomyces_cerevisiae/dna/Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel.fa.gz
 gunzip Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel.fa.gz
 ```
+In order to reads to the genome, we need to make index of the genome using following command.
+
+```
+hisat2-build Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel.fa Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel
+```
 Download GTF file for yeast genome. You will need this file for generating known splice site and counting number of read align to the gene.
 ```
 wget ftp://ftp.ensembl.org/pub/release-99/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz
@@ -54,6 +59,7 @@ If you would like to perform a spliced alignment, you can provide a known splice
 python ./scripts/hisat2-2.1.0/hisat2_extract_splice_sites.py ./annotation/Saccharomyces_cerevisiae.R64-1-1.99.gtf > ./annotation/splicesites.txt
 ```
 Below is the code for aligning read to the yeast genome. My reads are single end therefore I have one fastq file as input. If you have paired end data you need to modify this code. You can run the code below from rawdata directory. The output for this code will be bam file in bam_file directory.
+
 
 ```
 for fqfile in `ls *.fastq | sed 's/.fastq//g' | sort -u`
