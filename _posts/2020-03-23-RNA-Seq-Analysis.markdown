@@ -33,6 +33,8 @@ fastqc -o ~/RNA_Seq_Analysis/fastqcout `ls *fastq`
 Data we downloaded is RNA sequencing data from yeast strain between two different condition. In order to map this data to yeast genome I need to download yeast genome. I can download yeast genome using following command. 
 
 In order to consider sliced site I need to generate a file containing spliced site using extract_splice_sites.py script, which part of hisat2 software. Please download the hisat2
+
+# Generating index file from genome
 ```
 cd scripts
 wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-Linux_x86_64.zip
@@ -49,6 +51,7 @@ In order to reads to the genome, we need to make index of the genome using follo
 ```
 hisat2-build Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel.fa Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel
 ```
+# Generate splice sites
 Download GTF file for yeast genome. You will need this file for generating known splice site and counting number of read align to the gene.
 ```
 wget ftp://ftp.ensembl.org/pub/release-99/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz
@@ -58,6 +61,7 @@ If you would like to perform a spliced alignment, you can provide a known splice
 ```
 python ./scripts/hisat2-2.1.0/hisat2_extract_splice_sites.py ./annotation/Saccharomyces_cerevisiae.R64-1-1.99.gtf > ./annotation/splicesites.txt
 ```
+# Alignment to the genome
 Below is the code for aligning read to the yeast genome. My reads are single end therefore I have one fastq file as input. If you have paired end data you need to modify this code. You can run the code below from rawdata directory. The output for this code will be bam file in bam_file directory.
 
 
@@ -67,7 +71,7 @@ do
 hisat2 -x ~/Documents/Tutorial/RNA_Seq_Analysis/annotation/Saccharomyces_cerevisiae.R64-1-1.dna_sm.toplevel --known-splicesite-infile ~/Documents/Tutorial/RNA_Seq_Analysis/annotation/splicesites.txt $fqfile.fastq | samtools view -Sb > ~/Documents/Tutorial/RNA_Seq_Analysis/bam_files/$fqfile.bam
 done
 ```
-
+# Sorting BAM files
 Before counting the code you need to sort the bam file by using samtools sort. Run code below from the bam_file directory. This will generate sorted.bam files.
 
 ```
@@ -76,6 +80,7 @@ do
 samtools sort $bam_file.bam > $bam_file.sorted.bam
 done
 ```
+# Indexing BAM file
 If you would like visualize RNA-Seq data in IGV, you need to make an index file, below is the code for generating index file. After generating index file you can load sorted.bam file in IGV for visualization of RNA-Seq track.
 ```
 for bam_file in `ls *sorted.bam`;
@@ -136,6 +141,7 @@ In order to determine differntially expressed gene between two condition describ
 dds <- DESeq(dds)
 res <- results(dds)
 ```
+# Visualization of results
 Visualization of log2 fold change data between wild type and Nab2 depleted strains by volcano plot.
 
 ```
