@@ -67,6 +67,11 @@ Lets print each field in a separate line
 ```
 awk -F, '/CA/{print $1; print $2; print $3}' list.txt
 ```
+Lets use for loop to print first three field of the file splicesites.txt.
+```
+awk '{for (i = 1; i <= 3; i++) print $i}' splicesites.txt
+```
+
 
 
 
