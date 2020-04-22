@@ -1,13 +1,11 @@
 ---
-title: "scRNA-Seq-Analysis"
+title: "Single Cell RNA-Seq-Analysis"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## Analysis of Single Cell RNA-Seq data
 
 If you are reading this blog that means you are already know the principle bind single cell RNA Seq(scRNA-Seq). You might have some scRNA-Seq data in your hand which you would like to analysize. I will walk you through some of the currect best practices in scRNA-Seq data analysis.Most of the materials that will be discussed in this tutorial are available in Seurat website in a sort format. I will try explain why we are doing every steps. Let start analysizing some scRNA-Seq data. That that I will use can be downloaded from here.  
 
