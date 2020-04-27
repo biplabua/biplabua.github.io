@@ -1,14 +1,6 @@
----
-title: "2020-04-26-Geneset-Enrichment-Analysis"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Install packages
-```{r}
+```
 library(fgsea)
 library(tidyverse)
 ```
@@ -16,45 +8,46 @@ library(tidyverse)
 ## Downloads genesets from the 
 You can download the genesets that you are interested to check against your differentially expresssed genes from the website between. You can also creat a list of genes and their associated biological process function or components. The genesest is laoded as Mm.H object, class of the object is a list. You can make your own list.
 
-```{r}
+```
 load("Downloads/mouse_H_v5.RData")
 class(Mm.H)
 ```
 
 Now we are going to load our output from DESeq2 with contains, at least Entrez gene ID and log2FC. If your DESeq2 output has any other GeneID or Symbol you need to convert them to Entrez gene ID. I wrote about converting gene ID previously. But I also giving it here at the end of the analysis because our data already has Entrez gene ID.
-```{r}
+```
 load("Downloads/Annotated_Results_LvV.RData")
 ```
 We now filter out any row that does not have Entrez gene ID.
-```{r}
+```
 gseaDat <- filter(shrinkLvV, !is.na(Entrez))
 ```
 Make a rank vector of log2FC and set the name to Entrez Gene ID.
-```{r}
+```
 ranks <- gseaDat$logFC
 names(ranks) <- gseaDat$Entrez
 ```
 Sort the rank and look at the data as barplot.
 
-```{r}
+```
 ranks <- sort(ranks, decreasing = T)
 barplot(ranks)
 ```
 
 Now we can geneset enrichement analysis by using fgsea function of fgsea package. We are giving predefined geneset as list of genes and a named vector of log2FC. Name of log2FC vector is the Entrez gene ID. 
-```{r}
+```
 fgseaRes <- fgsea(Mm.H, ranks, minSize=15, maxSize = 500, nperm=1000)
 ```
 
 Now we can make an enrichment plot for our pathway of interest. 
 
-```{r}
+```
 plotEnrichment(Mm.H[["HALLMARK_ESTROGEN_RESPONSE_EARLY"]], ranks)
 ```
+{% include image.html url="/images/GSEA.1.png" caption="Volcano plot" width=300 align="right" %}
 
 We can make GSEA table 
 
-```{r}
+```
 topUp <- fgseaRes %>% 
   filter(ES > 0) %>% 
   top_n(10, wt=-padj)
@@ -69,6 +62,7 @@ plotGseaTable(Mm.H[topPathways$pathway],
               gseaParam = 0.5)
 ```
 
+{% include image.html url="/images/GSEA.png" caption="Volcano plot" width=300 align="right" %}
 
 
 
