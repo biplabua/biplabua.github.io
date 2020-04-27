@@ -5,7 +5,7 @@ library(fgsea)
 library(tidyverse)
 ```
 
-## Downloads genesets from the 
+## Downloads genesets from the GSEA website
 You can download the genesets that you are interested to check against your differentially expresssed genes from the website between. You can also creat a list of genes and their associated biological process function or components. The genesest is laoded as Mm.H object, class of the object is a list. You can make your own list.
 
 ```
@@ -33,6 +33,7 @@ ranks <- sort(ranks, decreasing = T)
 barplot(ranks)
 ```
 
+## GSEA analysis
 Now we can geneset enrichement analysis by using fgsea function of fgsea package. We are giving predefined geneset as list of genes and a named vector of log2FC. Name of log2FC vector is the Entrez gene ID. 
 ```
 fgseaRes <- fgsea(Mm.H, ranks, minSize=15, maxSize = 500, nperm=1000)
@@ -43,9 +44,9 @@ Now we can make an enrichment plot for our pathway of interest.
 ```
 plotEnrichment(Mm.H[["HALLMARK_ESTROGEN_RESPONSE_EARLY"]], ranks)
 ```
-{% include image.html url="/images/GSEA.1.png" caption="Volcano plot" width=300 align="right" %}
+{% include image.html url="/images/GSEA.1.png" caption="Enrichment plot" width=300 align="right" %}
 
-We can make GSEA table 
+## We can make GSEA table 
 
 ```
 topUp <- fgseaRes %>% 
@@ -62,8 +63,20 @@ plotGseaTable(Mm.H[topPathways$pathway],
               gseaParam = 0.5)
 ```
 
-{% include image.html url="/images/GSEA.png" caption="Volcano plot" width=300 align="right" %}
+{% include image.html url="/images/GSEA.png" caption="GSEA Table" width=300 align="right" %}
 
+## Code for changing Ensemble gene ID to entrez gene ID
+
+```
+library(biomaRt)
+mart <- useDataset("hsapiens_gene_ensembl", useMart("ensembl"))
+genes <- getBM(
+  filters="ensembl_gene_id",
+  attributes=c("ensembl_gene_id", "entrezgene"),
+  values=ensembl.genes,
+  mart=mart)
+ ```
+ ensembl.genes is a vector of your own genes of interest that you would like to convert.
 
 
 
