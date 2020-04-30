@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Heatmap is a widely used method for the visualization of gene expression data. I make heatmap for visualization of log2FC data from multiple samples. This time I decided to write a notebook by breaking down every steps so that it become easier for me to modify this code to produce desired heatmap next time when I need. The code is taken from the ComplexHeatmap documentation and I added the explanation for each step.
 
-First we need to load all the package we are going to use. 
+First we need to load all the packages we are going to use. 
 
 ```{r}
 library(ComplexHeatmap)
