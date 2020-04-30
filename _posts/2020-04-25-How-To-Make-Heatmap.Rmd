@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Heatmap is widely used method for the visualization of gene expression data. I make heatmap for visualization of log2FC data from multiple samples. This time I decided to write a notebook by breaking down every steps so that it become easier for me too modify this code to produce desired heatmap. The code is taken from the ComplexHeatmap documentation and I added the explanation for each step.
+Heatmap is a widely used method for the visualization of gene expression data. I make heatmap for visualization of log2FC data from multiple samples. This time I decided to write a notebook by breaking down every steps so that it become easier for me to modify this code to produce desired heatmap next time when I need. The code is taken from the ComplexHeatmap documentation and I added the explanation for each step.
 
 First we need to load all the package we are going to use. 
 
@@ -17,7 +17,7 @@ library(circlize)
 ```
 
 ## Loading and Pre-processing of data
-Load gene expression data for clustering.
+Load gene expression data for clustering. If you have your own data you read that by using read.csv or read.table function and comvert to a matrix.
 
 ```{r}
 expr = readRDS(system.file(package = "ComplexHeatmap", "extdata", "gene_expression.rds"))
