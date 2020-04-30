@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Heatmap is widely used method for visualization of geneexpression data. I make heatmap for visualization of log2FC data from multiple samples. This time I decided to write a notebook by breaking down every steps so that it become easier for me too modify this code to produce desired heatmap.
+Heatmap is widely used method for the visualization of gene expression data. I make heatmap for visualization of log2FC data from multiple samples. This time I decided to write a notebook by breaking down every steps so that it become easier for me too modify this code to produce desired heatmap. The code is taken from the ComplexHeatmap documentation and I added the explanation for each step.
 
 First we need to load all the package we are going to use. 
 
@@ -16,18 +16,19 @@ library(ComplexHeatmap)
 library(circlize)
 ```
 
+## Loading and Pre-processing of data
 Load gene expression data for clustering.
 
 ```{r}
 expr = readRDS(system.file(package = "ComplexHeatmap", "extdata", "gene_expression.rds"))
 ```
-Select column with expression value and convert them to matrix because data need to be in matrix formate to use as input for Heatmap function.
+Select column with expression value and convert them to a matrix because data need to be in matrix format to use as input for Heatmap function.
 
 ```{r}
 mat = as.matrix(expr[, grep("cell", colnames(expr))])
 ```
 
-In order to get nice clustering we need to scale data using scale function of R. Scale function center the data and convert it to z-score. In code bellow we apply scale function along the column of the matrix.
+In order to get a nice cluster we need to scale data using scale function of R. Scale function center the data and convert it to z-score. In code bellow we apply scale function along the column of the matrix and transpose it. If you have log2FC data you do not need to do this part.
 
 ```{r}
 mat_scaled = t(apply(mat, 1, scale))
@@ -41,56 +42,62 @@ Here we are using regular expression to extract cell type from the column names.
 ```{r}
 type = gsub("s\\d+_", "", colnames(mat))
 ```
-Next we are using cell types vector to generate a HeatmapAnnotation object to annotate the column of of the heatmap.
-```{r}
-ha = HeatmapAnnotation(type = type, annotation_name_side = "left")
-```
 
-Now let gradually build the complext heatmap. At first lets just took at the heatmap of our scalled expression data.
+## Generate heatmap
+
+Now we are going to gradually build the complex heatmap. At first lets just took at the heatmap of our scalled expression data. Instead of scalled expression data you can use your log2FC data. You read your log2FC data in R using read.table function then convert it to a matrix. 
+
 ```{r}
 Heatmap(mat_scaled, name = "expression")
 ```
-Now lets change the color of the heatmap adding values to col option, here we give two vectors as input one vector for break value of our gene expression data and another vector that correspond to the break value.
+
+Now we are going to change the color of the heatmap by adding values to col option, here we give two vectors as input to colorRamp2 function, one vector for break value of our gene expression data (Lower point, middle upper point) and another vector of color that correspond to the break value.
 ```{r}
 colors = colorRamp2(c(-2, 0, 2), c("green", "white", "red"))
 Heatmap(mat_scaled, name = "expression", col = colors)
 ```
-In the above heatmap we can not see the row name clearly so I would like to remove the reowname by setting show_row_names to FALSE.
+
+In the above heatmap we can not see the row names clearly, so I would like to remove the reowname by setting the option show_row_names to FALSE. There are a lot of option like this that take bolean values.
 
 ```{R}
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE)
 ```
-Now we would like to add some annotation to the heatmap, let add annotation for column in the heatmap. In this heatmap columns are cells, there are three types of cells in this data. A the type vector that we defined earilier is the vector of cell type for each column. The length of vector is equal to the number of column. With the code below we will make a HeatmapAnnotation object ha then use it to annotate the column of heatmap. We decided to put column annotation on the top of the heatmap using top_annotation option. 
+
+## Annotate samples
+Now we would like to add some annotations to the heatmap, let add annotation for columns in the heatmap. In this heatmap columns are cells, there are three types of cells in this data.  A vector object named 'type' that we defined earilier is a vector of cell type for each column. The length of vector is equal to the number of columns or samples. With the code below we will make a HeatmapAnnotation object ha then use it to annotate the column of heatmap. We decided to put column annotation on the top of the heatmap using top_annotation option. If you have different groups of samples, you can use group information of your samples to annotate your heatmap.
 
 ```{r}
 ha = HeatmapAnnotation(type = type, annotation_name_side = "left")
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE, top_annotation = ha)
 ```
-We can see that three color bar at the top of the heatmap represent three different cell type and ligend for the bar color at the left side of the heatmap.
+We can see that three color bar at the top of the heatmap represents three different cell types and ligend for the bar color is at the left side of the heatmap.
 
+## Breaking heatmap into clusters
 Now lets break the heatmap into five different clusters, by setting us row_km to 5. 
 
 ```{r}
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE, top_annotation = ha, row_km = 5)
 ```
 
+## Annotate genes or rows
 We can add another heatmap that represent mean value of gene's expression acrros the row of our data. Earlier we made a vector with the mean value of the row. 
 
 ```{r}
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE, top_annotation = ha, row_km = 5) +
-Heatmap(base_mean, name = "base mean")
+Heatmap(base_mean, name = "base mean", width = unit(15, "mm"))
 ```
-The one column heatmap at the side represent the mean value of the gene expression value. Now if we would like to and mean value of all five clusters and add to the top of the mean expression heatmap. 
+The one column heatmap at the side represent the mean value of the gene expression value. Now if we would like to add boxplot for the mean value of all five clusters at the top of the annotation bar. 
 
 ```{r}
 ha_mean = HeatmapAnnotation(summary = anno_summary(gp = gpar(fill = 2:6), height = unit(2, "cm")))
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE, top_annotation = ha, row_km = 5) +
-Heatmap(base_mean, name = "base mean", top_annotation = ha_mean)
+Heatmap(base_mean, name = "base mean", top_annotation = ha_mean, width = unit(15, "mm"))
 ```
-We have type of genes column in our gene expression matrix, which we can use to make another heatmap beside the base mean heatmap to add gene type information for every row. 
+
+We have type of gene in our gene expression matrix, which we can use to make another heatmap beside the base mean heatmap to add gene type information for every row. 
 ```{r}
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE, top_annotation = ha, row_km = 5) +
-Heatmap(base_mean, name = "base mean", top_annotation = ha_mean) +
+Heatmap(base_mean, name = "base mean", top_annotation = ha_mean, width = unit(15, "mm")) +
 Heatmap(expr$type, name = "gene type")
 ```
 

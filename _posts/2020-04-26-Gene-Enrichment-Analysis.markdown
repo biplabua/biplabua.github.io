@@ -78,6 +78,50 @@ genes <- getBM(
  ```
  ensembl.genes is a vector of your own genes of interest that you would like to convert.
 
+## KEGG Pathway Analysis
+```
+library(clusterProfiler)
+library(pathview)
+search_kegg_organism('mmu', by='kegg_code')
+
+sigGenes <- shrinkLvV$Entrez[ shrinkLvV$FDR < 0.01 & 
+                                !is.na(shrinkLvV$FDR) &
+                                abs(shrinkLvV$logFC) > 1 ]
+sigGenes <- na.exclude(sigGenes)
+kk <- enrichKEGG(gene = sigGenes, organism = 'mmu')
+head(kk, n=10)
+
+browseKEGG(kk, 'mmu03320')
+setwd("~/Desktop/")
+logFC <- annotLvV$logFC
+names(logFC) <- annotLvV$Entrez
+pathview(gene.data = logFC, 
+         pathway.id = "mmu03320", 
+         species = "mmu", 
+         limit = list(gene=5, cpd=1))
+````
+
+## Gene Ontology Analysis
+```
+library(goseq)
+supportedOrganisms() %>% filter(str_detect(Genome, "mm"))
+isSigGene <- shrinkLvV$FDR < 0.01 & !is.na(shrinkLvV$FDR)
+genes <- as.integer(isSigGene)
+names(genes) <- shrinkLvV$GeneID
+pwf <- nullp(genes, "mm10", "ensGene", bias.data = shrinkLvV$medianTxLength)
+goResults <- goseq(pwf, "mm10","ensGene", test.cats=c("GO:BP"))
+goResults %>% 
+  top_n(10, wt=-over_represented_pvalue) %>% 
+  mutate(hitsPerc=numDEInCat*100/numInCat) %>% 
+  ggplot(aes(x=hitsPerc, 
+             y=term, 
+             colour=over_represented_pvalue, 
+             size=numDEInCat)) +
+  geom_point() +
+  expand_limits(x=0) +
+  labs(x="Hits (%)", y="GO term", colour="p value", size="Count")
+  ```
+
 
 
 
