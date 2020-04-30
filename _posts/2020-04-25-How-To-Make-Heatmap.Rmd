@@ -70,6 +70,7 @@ Now we would like to add some annotations to the heatmap, let add annotation for
 ha = HeatmapAnnotation(type = type, annotation_name_side = "left")
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE, top_annotation = ha)
 ```
+
 We can see that three color bar at the top of the heatmap represents three different cell types and ligend for the bar color is at the left side of the heatmap.
 
 ## Breaking heatmap into clusters
@@ -86,6 +87,7 @@ We can add another heatmap that represent mean value of gene's expression acrros
 Heatmap(mat_scaled, name = "Expression", col = colors, row_title = NULL, show_row_dend = FALSE, show_row_names = FALSE, top_annotation = ha, row_km = 5) +
 Heatmap(base_mean, name = "base mean", width = unit(15, "mm"))
 ```
+
 The one column heatmap at the side represent the mean value of the gene expression value. Now if we would like to add boxplot for the mean value of all five clusters at the top of the annotation bar. 
 
 ```{r}
