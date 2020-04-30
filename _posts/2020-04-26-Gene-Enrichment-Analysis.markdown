@@ -100,7 +100,7 @@ pathview(gene.data = logFC,
          species = "mmu", 
          limit = list(gene=5, cpd=1))
 ````
-
+{% include image.html url="/images/mmu03320.pathview.png" caption="KEGG Pathway" width=300 align="right" %}
 ## Gene Ontology Analysis
 ```
 library(goseq)
@@ -121,7 +121,7 @@ goResults %>%
   expand_limits(x=0) +
   labs(x="Hits (%)", y="GO term", colour="p value", size="Count")
   ```
-
+{% include image.html url="/images/goseq.png" caption="GO Analysis" width=300 align="right" %}
 
 
 
