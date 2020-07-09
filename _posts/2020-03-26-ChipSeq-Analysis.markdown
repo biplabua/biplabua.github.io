@@ -79,11 +79,28 @@ samtools merge -r InputDox.bam SRR3997991_mapq40.bam SRR3997992_mapq40.bam
 
 ## Remove blacklisted region
 
+## Peak calling
+macs2 callpeak -t ../results/bowtie2/SRR3997985_unique.bam -c ../results/bowtie2/InputDox.bam -f BAM -g mm --outdir ../macs2 -n Oct4_dox_R1 -q 0.001
+macs2 callpeak -t ../results/bowtie2/SRR3997986_unique.bam -c ../results/bowtie2/InputDox.bam -f BAM -g mm --outdir ../macs2 -n Oct4_dox_R2 -q 0.001
+macs2 callpeak -t ../results/bowtie2/SRR3997987_unique.bam -c ../results/bowtie2/InputDox.bam -f BAM -g mm --outdir ../macs2 -n Oct4_dox_R3 -q 0.001
+macs2 callpeak -t ../results/bowtie2/SRR3997988_unique.bam -c ../results/bowtie2/InputDox.bam -f BAM -g mm --outdir ../macs2 -n Smad3_dox_R1 -q 0.001
+macs2 callpeak -t ../results/bowtie2/SRR3997989_unique.bam -c ../results/bowtie2/InputDox.bam -f BAM -g mm --outdir ../macs2 -n Smad3_dox_R2 -q 0.001
+macs2 callpeak -t ../results/bowtie2/SRR3997990_unique.bam -c ../results/bowtie2/InputDox.bam -f BAM -g mm --outdir ../macs2 -n Smad3_dox_R3 -q 0.001 
+macs2 callpeak -t ../results/bowtie2/SRR3997991_unique.bam -c ../results/bowtie2/Input.bam -f BAM -g mm --outdir ../macs2 -n Smad3_R1 --broad -q 0.001
+macs2 callpeak -t ../results/bowtie2/SRR3997992_unique.bam -c ../results/bowtie2/Input.bam -f BAM -g mm --outdir ../macs2 -n Smad3_R2 --broad -q 0.001
+macs2 callpeak -t ../results/bowtie2/SRR3997993_unique.bam -c ../results/bowtie2/Input.bam -f BAM -g mm --outdir ../macs2 -n Smad3_R3 --broad -q 0.001 
+
+
 ## Bamcoverage
 ```
 bamCompare --operation reciprocal_ratio --effectiveGenomeSize 2150570000 -b1 Oct4_dox.bam -b2 InputDox.bam -o Oct4Dox.bw
+bamCompare --operation reciprocal_ratio --effectiveGenomeSize 2150570000 -b1 Smad3_dox.bam -b2 InputDox.bam -o Oct4Dox.bw
 ```
 
 ## computeMatrix
+
+```
+computeMatrix reference-point --referencePoint center --sortRegions descend -a 2000 -b 2000 -R Oct4_dox_R1_summits.bed -S ../results/bowtie2/Oct4Dox.bw -o Oct4Dox.mat
+```
 
 ## plotHeatmap
