@@ -25,7 +25,7 @@ cat SRR_Acc_List.txt | xargs fastq-dump
 We will use fastqc to check quality of raw data that we downloaded from sra database. The fastqc will generate html report of every file, I am not going to explain everything about those report but you can check this link to read about inpretation of fastqc report. 
 
 ```
-fastqc -o ~/RNA_Seq_Analysis/fastqcout `ls *fastq`
+fastqc -o ~/RNA_Seq_Analysis/fastqc_out `ls *fastq`
 ```
 
 # Mapping raw data to the genome
