@@ -10,6 +10,13 @@ My research interest have changed as I have gone through different stages of my 
 <h2>Research Articles</h2>
 <ul>
 	<li>
+		<b>"Altered rRNA processing disrupts nuclear RNA homeostasis via competition for the poly(A)-binding protein Nab2"</b><br>
+		<i>LC Aguilar* B Paul*, T Reiter, L Gendron, AAN Rajan, R Montpetit, C Trahan, S Pechmann, M Oeffinger, and B Montpetit
+		</i><br>
+		Nucleic Acid Research (In press) <br>
+		<a href="paper2.pdf"><div class="color-button">pdf</div></a><a href=""><div class="color-button">cite</div></a><a href=""><div class="color-button">code</div></a>
+	</li><br>
+	<li>
 		<b>"Exonuclease domain mutants of yeast DIS3 display genome instability"</b><br>
 		<i>KL Milbury, B Paul, A Lari, C Fowler, B Montpetit, PC Stirling</i><br>
 		Nucleus 10 (1), 21-32, 2019<br>
