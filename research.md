@@ -13,7 +13,7 @@ My research interest have changed as I have gone through different stages of my 
 		<b>"Altered rRNA processing disrupts nuclear RNA homeostasis via competition for the poly(A)-binding protein Nab2"</b><br>
 		<i>LC Aguilar* B Paul*, T Reiter, L Gendron, AAN Rajan, R Montpetit, C Trahan, S Pechmann, M Oeffinger, and B Montpetit
 		</i><br>
-		Nucleic Acid Research (In press) <br>
+		Nucleic Acid Research In press (* denotes equal contribution) <br>
 		<a href="paper2.pdf"><div class="color-button">pdf</div></a><a href=""><div class="color-button">cite</div></a><a href=""><div class="color-button">code</div></a>
 	</li><br>
 	<li>
