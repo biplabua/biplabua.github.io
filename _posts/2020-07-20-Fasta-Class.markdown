@@ -1,3 +1,6 @@
+
+This is just a practice of python programming for me. 
+
 ```python
 from itertools import groupby
 import sys
