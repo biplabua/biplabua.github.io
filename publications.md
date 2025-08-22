@@ -10,6 +10,13 @@ Here is list of publications <a href="/research">here</a>.
 <h2>Research Articles</h2>
 <ul>
 	<li>
+                <b>"Identification and mapping of post-transcriptional modifications on the HIV-1 antisense transcript Ast in human cells"</b><br>
+                <i>Estevez, M., Li, Rui, Paul, B., Daneshvar, k., Mullen, AC., Romerio, F. and Addepalli, B.
+                </i><br>
+                RNA 2022;28(5):697-710.<br>
+                <a href="paper2.pdf"><div class="color-button">pdf</div></a><a href=""><div class="color-button">cite</div></a><a href=""><div class="color-button">$
+        </li><br>
+	<li>
 		<b>"Identification and mapping of post-transcriptional modifications on the HIV-1 antisense transcript Ast in human cells"</b><br>
 		<i>Estevez, M., Li, Rui, Paul, B., Daneshvar, k., Mullen, AC., Romerio, F. and Addepalli, B.
 		</i><br>
