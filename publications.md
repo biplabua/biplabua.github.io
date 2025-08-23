@@ -10,10 +10,10 @@ Here is list of publications <a href="/research">here</a>.
 <h2>Research Articles</h2>
 <ul>
 	<li>
-                <b>"Identification and mapping of post-transcriptional modifications on the HIV-1 antisense transcript Ast in human cells"</b><br>
-                <i>Estevez, M., Li, Rui, Paul, B., Daneshvar, k., Mullen, AC., Romerio, F. and Addepalli, B.
+                <b>"Spatial transcriptomics of healthy and fibrotic human liver at single-cell resolution"</b><br>
+                <i>Watson, B. R.*, Paul, B.*, Rahman, R. U., Amir-Zilberstein, L., Segerstolpe, Å., Epstein, E. T., ... & Mullen, A. C. 
                 </i><br>
-                RNA 2022;28(5):697-710.<br>
+                Nature Communications, 2025;16(1), 319 [* Denote equal contribution]<br>
                 <a href="paper2.pdf"><div class="color-button">pdf</div></a><a href=""><div class="color-button">cite</div></a><a href=""><div class="color-button">$
         </li><br>
 	<li>
