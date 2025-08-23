@@ -14,7 +14,7 @@ Here is list of publications <a href="/research">here</a>.
                 <i>Watson, B. R.*, Paul, B.*, Rahman, R. U., Amir-Zilberstein, L., Segerstolpe, Å., Epstein, E. T., ... & Mullen, A. C. 
                 </i><br>
                 Nature Communications, 2025;16(1), 319 [* Denote equal contribution]<br>
-                <a href="paper2.pdf"><div class="color-button">pdf</div></a><a href=""><div class="color-button">cite</div></a><a href=""><div class="color-button">$
+                <a href="paul_2025.pdf"><div class="color-button">pdf</div></a><a href=""><div class="color-button">cite</div></a><a href=""><div class="color-button">$
         </li><br>
 	<li>
 		<b>"Identification and mapping of post-transcriptional modifications on the HIV-1 antisense transcript Ast in human cells"</b><br>
